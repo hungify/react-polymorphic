@@ -10,14 +10,15 @@ type AsProp<C extends React.ElementType> = {
 
 type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P);
 
-type PolymorphicComponentProp<C extends React.ElementType, Props = {}> = React.PropsWithChildren<
-  Props & AsProp<C>
-> &
+type PolymorphicComponentProp<
+  C extends React.ElementType,
+  Props = NonNullable<unknown>,
+> = React.PropsWithChildren<Props & AsProp<C>> &
   Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
 
 type PolymorphicComponentPropWithRef<
   C extends React.ElementType,
-  Props = {}
+  Props = NonNullable<unknown>,
 > = PolymorphicComponentProp<C, Props> & { ref?: PolymorphicRef<C> };
 
 type TextProps<C extends React.ElementType> = PolymorphicComponentPropWithRef<
@@ -27,9 +28,10 @@ type TextProps<C extends React.ElementType> = PolymorphicComponentPropWithRef<
   }
 >;
 
-type TextComponent = <C extends React.ElementType = 'div'>(
-  props: TextProps<C>
-) => React.ReactElement | null;
+type TextComponent<C extends React.ElementType = 'span'> = ((
+  props: TextProps<C>,
+) => React.ReactNode | null) &
+  React.ForwardRefExoticComponent<TextProps<C>>;
 
 export const Text: TextComponent = React.forwardRef(
   <C extends React.ElementType = 'div'>(props: TextProps<C>, ref?: PolymorphicRef<C>) => {
@@ -48,5 +50,7 @@ export const Text: TextComponent = React.forwardRef(
         {children}
       </Component>
     );
-  }
+  },
 );
+
+Text.displayName = 'Text';

@@ -44,9 +44,10 @@ type BoxProps<C extends React.ElementType> = PolymorphicComponentPropWithRef<
   }
 >;
 
-type BoxComponent = <C extends React.ElementType = 'div'>(
+type BoxComponent<C extends React.ElementType = 'span'> = ((
   props: BoxProps<C>,
-) => React.ReactElement | null;
+) => React.ReactNode | null) &
+  React.ForwardRefExoticComponent<BoxProps<C>>;
 
 const NewBox: BoxComponent = React.forwardRef(
   <C extends React.ElementType = 'div'>(props: BoxProps<C>, ref?: PolymorphicRef<C>) => {
