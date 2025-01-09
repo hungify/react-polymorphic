@@ -4,7 +4,7 @@ interface HighLightProps {
 }
 export default function HighLight({ children, className }: HighLightProps) {
   return (
-    <strong style={{ backgroundColor: 'yellow' }} className={className}>
+    <strong style={{ backgroundColor: "yellow" }} className={className}>
       {children}
     </strong>
   );
