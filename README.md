@@ -1,2 +1,3 @@
-# vite-react-ts-starter
-React TypeScript stater created by Vite
+# React Polymorphic Component
+
+A simple example of a polymorphic component in React.
