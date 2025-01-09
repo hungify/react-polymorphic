@@ -22,25 +22,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "~/components/*": ["src/components/*"],
-      "~/pages/*": ["src/pages/*"],
-      "~/utils/*": ["src/utils/*"],
-      "~/layouts/*": ["src/layouts/*"],
-      "~/types/*": ["src/types/*"],
-      "~/hooks/*": ["src/hooks/*"],
-      "~/constants/*": ["src/constants/*"],
-      "~/styles/*": ["src/styles/*"],
-      "~/assets/*": ["src/assets/*"],
-      "~/locales/*": ["src/locales/*"],
-      "~/i18n/*": ["src/i18n/*"],
-      "~/services/*": ["src/services/*"],
-      "~/routes/*": ["src/routes/*"],
-      "~/context/*": ["src/context/*"],
-      "~/app/*": ["src/app/*"],
-      "~/models/*": ["src/models/*"],
-      "~/api/*": ["src/api/*"],
-      "~modules/*": ["src/modules/*"]
+      "#/*": ["src/*"]
     }
   },
   "include": ["src"],
